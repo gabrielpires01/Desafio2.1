@@ -10,7 +10,7 @@ export class ConversionController {
             view.exit();
             return 1;
         }
-        const to = loopValidation(() => view.inputTarget(), isValidTargetCurrency);
+        const to = loopValidation(() => view.inputTarget(), (currency) => isValidTargetCurrency(currency, from));
         const amount = loopValidation(() => view.inputAmount(), isValidAmount);
 
         const data = await conversionService.fecthRate(from, to, amount);

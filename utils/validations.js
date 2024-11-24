@@ -36,11 +36,7 @@ function isValidOriginCurrency(currency) {
 }
 
 function isValidTargetCurrency(currency, from) {
-    if (currenciesAreEqual(from, currency)) {
-        error("Currencies must be different");
-        return false;
-    }
-    return isValidCurrency(currency);
+    return !currenciesAreEqual(from, currency) && isValidCurrency(currency);
 }
 
 export {
